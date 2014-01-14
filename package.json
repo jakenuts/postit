@@ -1,0 +1,10 @@
+{
+    "name": "postit",
+    "version": "0.0.1",
+    "main": "postit.js",
+    "dependencies": {
+    },
+    "engines": {
+    "node": "v0.10.x"
+    }
+  }
