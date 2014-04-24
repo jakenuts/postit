@@ -4,8 +4,9 @@ var url = require('url');
 //-----------------------------------------------------------
 // Class Definition
 //-----------------------------------------------------------
-function PostIt(uri) {
+function PostIt(uri, encoding) {
 	this.init(uri);
+    this.encoding = encoding || 'none';
 }
 
 var p = PostIt.prototype;
@@ -25,7 +26,8 @@ p.post = function(jsonmessage) {
 
     var headers = {
       'Content-Type': 'application/json',
-      'Content-Length': jsonString.length
+      'Content-Length': (this.encoding === 'none') ? jsonString.length
+                                                   : Buffer.byteLength(jsonString, this.encoding)
     };
 
     var options = {
